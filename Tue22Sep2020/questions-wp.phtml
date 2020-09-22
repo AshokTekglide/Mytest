@@ -1,0 +1,32 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2020 Amasty (https://www.amasty.com)
+ * @package Amasty_Faq
+ */
+?>
+<?php
+/**
+ * @var \Amasty\Faq\Block\Lists\QuestionsList $block
+ */
+
+$helper = $this->helper('Tekglide\Amastyattribute\Helper\Data');
+
+/** @var \Amasty\Faq\Block\Rating\Rating $rating */
+?>
+<div class="block-title">
+	<h3><?= $block->escapeHtml(__('FAQs')); ?></h3>
+</div>
+<div class="amfaq_questions widget">
+    <?php if ($questions = $helper->getMostFrequently()): ?>
+    <?php foreach ($questions as $question): ?>
+        <div class="am-item">
+            <div class="am-title">
+                <a href="<?= $block->getUrl('faq').$block->escapeUrl($question['url_key']) ?>">
+                    <?= /** @noEscape */ $block->highlight($question['title']); ?>
+                </a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
+</div>
