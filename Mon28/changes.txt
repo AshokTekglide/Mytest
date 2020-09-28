@@ -1,0 +1,14 @@
+1. composer require alvis/magento2-twitter
+2. app/code/FishPig/WordPress/view/frontend/layout/wordpress_default.xml
+    ADD :
+	<block name="alvis_twitter_new.latest" class="Alvis\Twitter\Block\Tweets" template="Alvis_Twitter::tweets.phtml" ifconfig="alvis_twitter/config/enabled">
+            <arguments>
+                <argument name="title" xsi:type="string">Twitter</argument>
+                <argument name="type" xsi:type="string">latest</argument>
+            </arguments>
+        </block>
+3. app/design/frontend/materialhandling/mh/Magento_Theme/layout/default.xml
+   CHANGES/ADD:
+	<referenceBlock name="alvis_twitter.latest" remove="true" />
+	<referenceBlock name="alvis_twitter.mentions" remove="true" />
+	<referenceBlock name="alvis_twitter.search" remove="true" />
